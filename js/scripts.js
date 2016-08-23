@@ -1,3 +1,4 @@
+//Business logic
 function Customer(name) {
   this.nameInput = name;
   this.tickets = [];
@@ -23,17 +24,53 @@ Ticket.prototype.ticketPrice = function () {
   return price;
 };
 
+// Front-end logic
 $(document).ready(function() {
+  $("#add-ticket").click(function () {
+    $("#new-tickets").append ('<div class="new-ticket">' +
+                                '<label for="userAge">Please enter your age: </label>' +
+                                '<input id="userAge" type="number" class="form-control">' +
+                                '<label for="movie">Please select a movie: </label>' +
+                                '<select class="form-control" id="movie">' +
+                                  '<option value="new-release">Jason Bourne</option>' +
+                                  '<option value="new-release">Suicide Squad</option>' +
+                                  '<option value="old-release">Lion King</option>' +
+                                  '<option value="old-release">Titanic</option>' +
+                                '</select>' +
+                                '<label for="movie">Please select a time: </label>' +
+                                '<select class="form-control" id="time">' +
+                                  '<option value="matinee">3:30 PM</option>' +
+                                  '<option value="matinee">4:30 PM</option>' +
+                                  '<option value="full-price">5:30 PM</option>' +
+                                  '<option value="full-price">6:30 PM</option>' +
+                                '</select>' +
+                              '</div>')
+  });
+
+
   $("form#userInput").submit(function (event) {
     event.preventDefault();
 
-    var inputtedAge = parseInt($("input#userAge").val());
-    var inputtedTime = $("input:radio[name=time]:checked").val();
-    var inputtedMovie = $("#movie").val();
-    var newTicket = new Ticket (inputtedAge, inputtedTime, inputtedMovie);
+    var inputtedName = $("input#userName").val();
+
+    var newCustomer = new Customer(inputtedName);
+
+    $(".new-ticket").each(function () {
+      var inputtedAge = $(this).find("input#userAge").val();
+        inputtedAge = parseInt(inputtedAge);
+      var inputtedTime = $(this).find("#time").val();
+      var inputtedMovie = $(this).find("#movie").val();
+      var newTicket = new Ticket (inputtedAge, inputtedTime, inputtedMovie);
+      newCustomer.tickets.push(newTicket);
+
+      $("ul").append("<li>" + "Your ticket will cost you: " + "$"  + newTicket.ticketPrice() + "</li>");
+      $("ul").append("<li>" + "Your ticket will cost you: " + "$"  + newTicket.ticketPrice() + "</li>");
+
+        console.log(newCustomer);
+    });
 
 
-    $("ul").append("<li>" + "Your ticket will cost you: " + "$"  + newTicket.ticketPrice() + "</li>");
+
   });
 });
 

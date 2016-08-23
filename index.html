@@ -12,40 +12,29 @@
     <div class="container-fluid">
       <h1>Epicodus Philly Theater</h1>
       <form id="userInput">
-        <label for="userAge">Please enter your age: </label>
-        <input id="userAge" type="number" class="form-control">
-        <label for="movie">Please select a movie: </label>
-        <select class="form-control" id="movie">
-          <option value="new-release">Jason Bourne</option>
-          <option value="new-release">Suicide Squad</option>
-          <option value="old-release">Lion King</option>
-          <option value="old-release">Titanic</option>
-        </select>
-        <label for="time">Please enter your age: </label>
-        <div class="radio">
-          <label>
-            <input type="radio" name="time" value="matinee" checked>
-            3:30 PM
-          </label>
+        <label for="userName">Please enter your Name: </label>
+        <input id="userName" type="text" class="form-control">
+        <div id="new-tickets">
+          <div class="new-ticket">
+            <label for="userAge">Please enter your age: </label>
+            <input id="userAge" type="number" class="form-control">
+            <label for="movie">Please select a movie: </label>
+            <select class="form-control" id="movie">
+              <option value="new-release">Jason Bourne</option>
+              <option value="new-release">Suicide Squad</option>
+              <option value="old-release">Lion King</option>
+              <option value="old-release">Titanic</option>
+            </select>
+            <label for="movie">Please select a time: </label>
+            <select class="form-control" id="time">
+              <option value="matinee">3:30 PM</option>
+              <option value="matinee">4:30 PM</option>
+              <option value="full-price">5:30 PM</option>
+              <option value="full-price">6:30 PM</option>
+            </select>
+          </div>
         </div>
-        <div class="radio">
-          <label>
-            <input type="radio" name="time" value="matinee">
-            4:30 PM
-          </label>
-        </div>
-         <div class="radio">
-          <label>
-            <input type="radio" name="time" value="full-price">
-            5:30 PM
-          </label>
-        </div>
-        <div class="radio">
-         <label>
-           <input type="radio" name="time" value="full-price">
-           6:30 PM
-         </label>
-       </div>
+       <span class="btn btn-primary" id="add-ticket">add another ticket</span>
        <button type="submit" class="btn btn-info">Go to Checkout</button>
      </form>
 
